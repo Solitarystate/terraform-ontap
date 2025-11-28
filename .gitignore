@@ -1,0 +1,15 @@
+# Terraform state (contains secrets!)
+*.tfstate
+*.tfstate.*
+.terraform/
+
+# Sensitive variable files
+*.tfvars
+!*.tfvars.example
+
+# OS files
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
