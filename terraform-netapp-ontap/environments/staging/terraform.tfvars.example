@@ -1,0 +1,25 @@
+# Example variable values for the staging environment
+
+# SVM Configuration
+svm_name = "staging-svm"
+svm_ip = "192.168.1.10"
+svm_netmask = "255.255.255.0"
+svm_gateway = "192.168.1.1"
+
+# Volume Configuration
+volume_name = "staging-volume"
+volume_size = "100Gi"
+volume_type = "flexible"
+
+# Network Configuration
+network_interface_name = "staging-net-interface"
+vlan_id = 100
+broadcast_domain = "staging-broadcast-domain"
+
+# NFS Configuration
+nfs_share_name = "staging-nfs-share"
+nfs_export_path = "/export/staging"
+
+# CIFS Configuration
+cifs_share_name = "staging-cifs-share"
+cifs_share_path = "/cifs/staging"

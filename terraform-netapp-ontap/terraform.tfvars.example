@@ -1,0 +1,5 @@
+# NetApp ONTAP Connection Details
+ontap_cluster_mgmt_ip = "10.0.0.100"
+ontap_username        = "admin"
+ontap_password        = "your-secure-password"
+ontap_validate_certs  = false  # Set to true in production

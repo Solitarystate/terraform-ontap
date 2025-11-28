@@ -1,0 +1,25 @@
+# Example variable values for the production environment
+
+# SVM Configuration
+svm_name = "prod-svm"
+svm_ip = "192.168.1.10"
+svm_admin_user = "admin"
+svm_admin_password = "your_password_here"
+
+# Network Configuration
+network_interface_name = "prod-net-interface"
+vlan_id = 100
+broadcast_domain = "prod-broadcast-domain"
+
+# Volume Configuration
+volume_name = "prod-volume"
+volume_size = "100Gi"
+volume_type = "flexible"
+
+# NFS Configuration
+nfs_share_name = "prod-nfs-share"
+nfs_export_path = "/export/prod-nfs"
+
+# CIFS Configuration
+cifs_share_name = "prod-cifs-share"
+cifs_share_path = "/cifs/prod-share"
