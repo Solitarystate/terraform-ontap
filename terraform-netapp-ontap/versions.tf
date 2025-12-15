@@ -1,10 +1,10 @@
 terraform {
   required_providers {
-    netapp = {
-      source  = "NetApp/netapp-ontap"
-      version = "~> 1.0"
+    netapp-ontap = {
+      source  = "netapp/netapp-ontap"
+      version = "~> 2.4.0"
     }
   }
 
-  required_version = ">= 1.0"
+  required_version = ">= 1.5.0"
 }

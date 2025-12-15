@@ -45,3 +45,38 @@ variable "volume_name" {
   description = "The name of the volume to be created"
   type        = string
 }
+
+variable "cluster_name" {
+  description = "Name of the ONTAP cluster"
+  type        = string
+  default     = "cluster1"
+}
+
+variable "ipspace" {
+  description = "IPspace for the SVM"
+  type        = string
+  default     = "Default"
+}
+
+variable "aggregates" {
+  description = "List of aggregates to assign to the SVM"
+  type        = list(string)
+}
+
+variable "comment" {
+  description = "Comment for the SVM"
+  type        = string
+  default     = "Managed by Terraform"
+}
+
+variable "language" {
+  description = "Language setting for the SVM"
+  type        = string
+  default     = "c.utf_8"
+}
+
+variable "snapshot_policy" {
+  description = "Snapshot policy for the SVM"
+  type        = string
+  default     = "default"
+}

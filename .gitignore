@@ -5,7 +5,8 @@
 
 # Sensitive variable files
 *.tfvars
-!*.tfvars.example
+terraform.tfvars.example
+*.tfvars.example
 
 # OS files
 .DS_Store
@@ -13,3 +14,10 @@
 # IDE
 .idea/
 .vscode/
+
+# Backup files
+*.backup
+*.bak
+
+# Log files
+*.log

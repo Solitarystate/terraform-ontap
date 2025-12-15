@@ -1,6 +1,6 @@
 # Netapp Ontap Terraform Use Cases and Samples
 
-Note: This is work in progress.
+Note: This is work in progress. I am learning through the process too.
 
 This repository contains various use cases and samples for deploying and managing NetApp Ontap storage systems using Terraform. The examples provided here demonstrate how to automate the provisioning, configuration, and management of Ontap resources in a cloud or on-premises environment.
 

@@ -1,23 +1,22 @@
-resource "netapp_volume" "this" {
+resource "netapp-ontap_storage_volume" "this" {
+  cx_profile_name   = var.cluster_name
   name              = var.volume_name
-  svm               = var.svm_name
+  svm_name          = var.svm_name
   size              = var.size
   space_guarantee   = var.space_guarantee
-  aggregate         = var.aggregate
-  volume_type       = var.volume_type
-  snapshot_policy    = var.snapshot_policy
-  encryption        = var.encryption
-  qos_policy        = var.qos_policy
+  aggregates        = [var.aggregate]
+  type              = var.volume_type
+  snapshot_policy   = var.snapshot_policy
 }
 
 output "volume_id" {
-  value = netapp_volume.this.id
+  value = netapp-ontap_storage_volume.this.id
 }
 
 output "volume_name" {
-  value = netapp_volume.this.name
+  value = netapp-ontap_storage_volume.this.name
 }
 
 output "volume_size" {
-  value = netapp_volume.this.size
+  value = netapp-ontap_storage_volume.this.size
 }

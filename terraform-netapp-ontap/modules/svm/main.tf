@@ -1,26 +1,21 @@
-resource "netapp_svm" "example" {
+resource "netapp-ontap_svm" "example" {
+  cx_profile_name     = var.cluster_name
   name                = var.svm_name
-  aggregate           = var.aggregate
+  aggregates          = var.aggregates
   ipspace             = var.ipspace
-  subnet              = var.subnet
-  dns_domain          = var.dns_domain
-  dns_servers         = var.dns_servers
-  ntp_servers         = var.ntp_servers
-  data_protection     = var.data_protection
-  svm_type            = var.svm_type
   comment             = var.comment
 }
 
-resource "netapp_svm_protocol" "nfs" {
-  svm_name = netapp_svm.example.name
-  nfs {
-    enabled = var.nfs_enabled
-  }
+resource "netapp-ontap_protocols_nfs_service" "nfs" {
+  count           = var.nfs_enabled ? 1 : 0
+  cx_profile_name = var.cluster_name
+  svm_name        = netapp-ontap_svm.example.name
+  enabled         = true
 }
 
-resource "netapp_svm_protocol" "cifs" {
-  svm_name = netapp_svm.example.name
-  cifs {
-    enabled = var.cifs_enabled
-  }
+resource "netapp-ontap_protocols_cifs_service" "cifs" {
+  count           = var.cifs_enabled ? 1 : 0
+  cx_profile_name = var.cluster_name
+  svm_name        = netapp-ontap_svm.example.name
+  enabled         = true
 }
