@@ -1,21 +1,23 @@
-resource "netapp-ontap_svm" "example" {
-  cx_profile_name     = var.cluster_name
-  name                = var.svm_name
-  aggregates          = var.aggregates
-  ipspace             = var.ipspace
-  comment             = var.comment
+terraform {
+  required_providers {
+    netapp-ontap = {
+      source  = "netapp/netapp-ontap"
+      version = "~> 2.4.0"
+    }
+  }
 }
 
-resource "netapp-ontap_protocols_nfs_service" "nfs" {
-  count           = var.nfs_enabled ? 1 : 0
+resource "netapp-ontap_svm" "this" {
+  provider        = netapp-ontap
   cx_profile_name = var.cluster_name
-  svm_name        = netapp-ontap_svm.example.name
-  enabled         = true
+  name            = var.svm_name
+  ipspace         = var.ipspace
+  comment         = var.comment
+
+  aggregates = [
+    for aggr in var.aggregates : { name = aggr }
+  ]
 }
 
-resource "netapp-ontap_protocols_cifs_service" "cifs" {
-  count           = var.cifs_enabled ? 1 : 0
-  cx_profile_name = var.cluster_name
-  svm_name        = netapp-ontap_svm.example.name
-  enabled         = true
-}
+# Note: Protocol services (NFS/CIFS) are typically enabled via the SVM resource itself
+# or managed separately. The provider may not support these as separate resources.

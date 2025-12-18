@@ -1,29 +1,49 @@
-variable "svm_name" {
-  description = "The name of the Storage Virtual Machine (SVM)"
+# Cluster connection variables
+variable "cluster_name" {
+  description = "Name of the ONTAP cluster"
   type        = string
 }
 
-variable "svm_ip" {
-  description = "The IP address for the SVM"
+variable "cluster_mgmt_ip" {
+  description = "Management IP of the ONTAP cluster"
   type        = string
 }
 
-variable "svm_netmask" {
-  description = "The netmask for the SVM IP address"
+variable "cluster_username" {
+  description = "Username for ONTAP cluster access"
   type        = string
 }
 
-variable "svm_username" {
-  description = "The username for accessing the SVM"
-  type        = string
-}
-
-variable "svm_password" {
-  description = "The password for accessing the SVM"
+variable "cluster_password" {
+  description = "Password for ONTAP cluster access"
   type        = string
   sensitive   = true
 }
 
+# SVM variables
+variable "svm_name" {
+  description = "Name of the Storage Virtual Machine"
+  type        = string
+}
+
+variable "ipspace" {
+  description = "IPspace for the SVM"
+  type        = string
+  default     = "Default"
+}
+
+variable "comment" {
+  description = "Comment for the SVM"
+  type        = string
+  default     = "Managed by Terraform"
+}
+
+variable "aggregates" {
+  description = "List of aggregates to assign to the SVM"
+  type        = list(string)
+}
+
+# Protocol variables
 variable "nfs_enabled" {
   description = "Enable NFS protocol on the SVM"
   type        = bool
@@ -34,49 +54,4 @@ variable "cifs_enabled" {
   description = "Enable CIFS protocol on the SVM"
   type        = bool
   default     = false
-}
-
-variable "volume_size" {
-  description = "The size of the volume to be created"
-  type        = string
-}
-
-variable "volume_name" {
-  description = "The name of the volume to be created"
-  type        = string
-}
-
-variable "cluster_name" {
-  description = "Name of the ONTAP cluster"
-  type        = string
-  default     = "cluster1"
-}
-
-variable "ipspace" {
-  description = "IPspace for the SVM"
-  type        = string
-  default     = "Default"
-}
-
-variable "aggregates" {
-  description = "List of aggregates to assign to the SVM"
-  type        = list(string)
-}
-
-variable "comment" {
-  description = "Comment for the SVM"
-  type        = string
-  default     = "Managed by Terraform"
-}
-
-variable "language" {
-  description = "Language setting for the SVM"
-  type        = string
-  default     = "c.utf_8"
-}
-
-variable "snapshot_policy" {
-  description = "Snapshot policy for the SVM"
-  type        = string
-  default     = "default"
 }

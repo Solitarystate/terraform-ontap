@@ -9,10 +9,30 @@ terraform {
   }
 }
 
+provider "netapp-ontap" {
+  alias = "netapp"
+  
+  connection_profiles = [{
+    name           = var.cluster_name
+    hostname       = var.cluster_mgmt_ip
+    username       = var.cluster_username
+    password       = var.cluster_password
+    validate_certs = false
+  }]
+}
+
 module "svm" {
   source = "../../modules/svm"
+  
+  providers = {
+    netapp-ontap = netapp-ontap.netapp
+  }
 
-  svm_name     = var.svm_name
-  cluster_name = "labnetapp01"
-  aggregates   = ["l01_01_aggr01_STD"]
+  cluster_name   = var.cluster_name
+  svm_name       = var.svm_name
+  ipspace        = var.ipspace
+  comment        = var.comment
+  aggregates     = var.aggregates
+  nfs_enabled    = var.nfs_enabled
+  cifs_enabled   = var.cifs_enabled
 }

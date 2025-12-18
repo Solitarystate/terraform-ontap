@@ -1,11 +1,12 @@
-provider "netapp-ontap" {
-  connection_profiles = [
-    {
-      name     = "labnetapp01"
-      hostname = var.ontap_cluster_mgmt_ip
-      username = var.ontap_username
-      password = var.ontap_password
-      validate_certs = var.ontap_validate_certs
-    }
-  ]
-}
+# Provider configuration is now in environments/dev/main.tf
+# Each environment handles its own provider setup
+
+# provider "netapp-ontap" {
+#   connection_profiles = [{
+#     name           = var.cluster_name
+#     hostname       = var.cluster_mgmt_ip
+#     username       = var.cluster_username
+#     password       = var.cluster_password
+#     validate_certs = false
+#   }]
+# }
