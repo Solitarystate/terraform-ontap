@@ -1,6 +1,8 @@
-# Terraform NetApp ONTAP Deployment
+# OpenTofu NetApp ONTAP Deployment
 
-This project provides Terraform modules and configurations for deploying and managing NetApp ONTAP resources in an on-premise environment. The modules are designed to facilitate the creation of Storage Virtual Machines (SVMs), volumes, network interfaces, and protocol shares (NFS and CIFS).
+This project provides OpenTofu modules and configurations for deploying and managing NetApp ONTAP resources in an on-premise environment. The modules are designed to facilitate the creation of Storage Virtual Machines (SVMs), volumes, network interfaces, and protocol shares (NFS and CIFS).
+
+> **Note**: This project uses OpenTofu, a fork of Terraform that is fully compatible with Terraform configurations. All Terraform HCL syntax applies here.
 
 ## Project Structure
 
@@ -31,9 +33,13 @@ This project provides Terraform modules and configurations for deploying and man
 
 1. **Clone the Repository**: Clone this repository to your local machine.
 2. **Configure Variables**: Update the variable files in the `environments` directory to match your environment settings.
-3. **Initialize Terraform**: Run `terraform init` in the desired environment directory to initialize the Terraform workspace.
-4. **Plan the Deployment**: Use `terraform plan` to review the resources that will be created.
-5. **Apply the Configuration**: Execute `terraform apply` to create the resources defined in the configuration.
+3. **Initialize OpenTofu**: Run `tofu init` in the desired environment directory to initialize the OpenTofu workspace.
+4. **Plan the Deployment**: Use `tofu plan` to review the resources that will be created.
+5. **Apply the Configuration**: Execute `tofu apply` to create the resources defined in the configuration.
+
+### Alternative: Using Terraform
+
+If you prefer to use Terraform instead of OpenTofu, replace all `tofu` commands with `terraform` in the steps above. The configuration is fully compatible with both tools.
 
 ## Usage
 
