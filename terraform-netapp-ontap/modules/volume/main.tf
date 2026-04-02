@@ -1,22 +1,26 @@
-resource "netapp-ontap_storage_volume" "this" {
-  cx_profile_name   = var.cluster_name
-  name              = var.volume_name
-  svm_name          = var.svm_name
-  size              = var.size
-  space_guarantee   = var.space_guarantee
-  aggregates        = [var.aggregate]
-  type              = var.volume_type
-  snapshot_policy   = var.snapshot_policy
+terraform {
+  required_providers {
+    netapp-ontap = {
+      source  = "netapp/netapp-ontap"
+      version = "~> 2.4.0"
+    }
+  }
 }
 
-output "volume_id" {
-  value = netapp-ontap_storage_volume.this.id
-}
+resource "netapp-ontap_volume" "this" {
+  provider        = netapp-ontap
+  cx_profile_name = var.cluster_name
+  name            = var.volume_name
+  svm_name        = var.svm_name
 
-output "volume_name" {
-  value = netapp-ontap_storage_volume.this.name
-}
+  aggregates      = [{ name = var.aggregate }]
 
-output "volume_size" {
-  value = netapp-ontap_storage_volume.this.size
+  space = {
+    size      = var.size
+    size_unit = var.size_unit
+  }
+
+  space_guarantee = var.space_guarantee
+  type            = var.volume_type
+  snapshot_policy = var.snapshot_policy
 }

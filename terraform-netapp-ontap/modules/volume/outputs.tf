@@ -1,15 +1,15 @@
 output "volume_id" {
-  value = netapp_volume.example.id
+  value = netapp-ontap_volume.this.id
 }
 
 output "volume_name" {
-  value = netapp_volume.example.name
+  value = netapp-ontap_volume.this.name
 }
 
 output "volume_size" {
-  value = netapp_volume.example.size
+  value = netapp-ontap_volume.this.space.size
 }
 
 output "volume_type" {
-  value = netapp_volume.example.type
+  value = netapp-ontap_volume.this.type
 }

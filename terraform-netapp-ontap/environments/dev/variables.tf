@@ -55,3 +55,43 @@ variable "cifs_enabled" {
   type        = bool
   default     = false
 }
+
+# Volume variables
+variable "volume_name" {
+  description = "Name of the volume to create"
+  type        = string
+}
+
+variable "size" {
+  description = "Size of the volume (numeric, paired with size_unit)"
+  type        = number
+}
+
+variable "size_unit" {
+  description = "Unit for the volume size (kb, mb, gb, tb, pb)"
+  type        = string
+  default     = "gb"
+}
+
+variable "volume_type" {
+  description = "Type of the volume (rw, dp, ls)"
+  type        = string
+  default     = "rw"
+}
+
+variable "aggregate" {
+  description = "Aggregate where the volume will be created"
+  type        = string
+}
+
+variable "space_guarantee" {
+  description = "Space guarantee for the volume (none, file, volume)"
+  type        = string
+  default     = "none"
+}
+
+variable "snapshot_policy" {
+  description = "Snapshot policy for the volume"
+  type        = string
+  default     = "default"
+}

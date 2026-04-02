@@ -36,3 +36,23 @@ module "svm" {
   nfs_enabled    = var.nfs_enabled
   cifs_enabled   = var.cifs_enabled
 }
+
+module "volume" {
+  source = "../../modules/volume"
+
+  providers = {
+    netapp-ontap = netapp-ontap.netapp
+  }
+
+  cluster_name    = var.cluster_name
+  volume_name     = var.volume_name
+  svm_name        = var.svm_name
+  size            = var.size
+  size_unit       = var.size_unit
+  volume_type     = var.volume_type
+  aggregate       = var.aggregate
+  space_guarantee = var.space_guarantee
+  snapshot_policy = var.snapshot_policy
+
+  depends_on = [module.svm]
+}
